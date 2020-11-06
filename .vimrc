@@ -13,6 +13,7 @@ set undofile
 set incsearch
 
 call plug#begin('~/.vim/plugged')
+
 Plug 'morhetz/gruvbox'
 Plug 'jremmen/vim-ripgrep'
 Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
@@ -28,7 +29,6 @@ Plug 'preservim/nerdcommenter'
 Plug 'mattn/emmet-vim'
 Plug 'tomtom/tcomment_vim'
 Plug 'gregsexton/matchtag'
-Plug 'cwfoo/vim-text-omnicomplete'
 call plug#end()
 
 colorscheme gruvbox
