@@ -11,9 +11,13 @@ set noswapfile
 set undodir=~/.vim/undodir
 set undofile
 set incsearch
+set showcmd
+set autowrite
+" AUTOCOMPLETION FOR CSS
+filetype plugin on
+set omnifunc=syntaxcomplete#Complete
 
 call plug#begin('~/.vim/plugged')
-
 Plug 'morhetz/gruvbox'
 Plug 'jremmen/vim-ripgrep'
 Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
@@ -29,6 +33,9 @@ Plug 'preservim/nerdcommenter'
 Plug 'mattn/emmet-vim'
 Plug 'tomtom/tcomment_vim'
 Plug 'gregsexton/matchtag'
+Plug 'cwfoo/vim-text-omnicomplete'
+Plug 'jparise/vim-graphql'
+Plug 'habamax/vim-godot'
 call plug#end()
 
 colorscheme gruvbox
@@ -47,6 +54,7 @@ let g:vrfr_rg = 'true'
 let g:netrw_banner = 0
 let g:netrw_winsize = 25
 let g:UltiSnipsExpandTrigger='<C-j>'
+let g:go_fmt_command = 'goimports'
 
 nnoremap <leader>h :wincmd h<CR>
 nnoremap <leader>j :wincmd j<CR>
@@ -56,3 +64,6 @@ nnoremap <leader>u :UndotreeShow<CR>
 nnoremap <leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 50<CR>
 nnoremap <leader>> <C-w>><CR>
 nnoremap <leader>> <C-w><<CR>
+
+" Make GoTest faster
+cmap gt GoTest
