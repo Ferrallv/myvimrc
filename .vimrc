@@ -45,7 +45,17 @@ if executable('rg')
 	let g:rg_derive_root='true'
 endif
 
+" Some au group stuff
+" get html formatting
 au BufRead,BufNewFile *.gohtml set filetype=html
+
+" Get javascript formatting
+augroup FileTypeSpecificAutocommands
+    autocmd FileType javascript setlocal tabstop=2 softtabstop=2 shiftwidth=2
+augroup END
+
+" I want 'K' to give me the goods in python
+autocmd BufNewFile,BufRead *.py set keywordprg=pydoc3.10
 
 let mapleader = ' '
 
@@ -67,3 +77,15 @@ nnoremap <leader>> <C-w><<CR>
 
 " Make GoTest faster
 cmap gt GoTest
+" Pretty Print Json
+cmap ppj %!python3 -m json.tool
+
+" To copy to windows clipboard
+" WSL yank support
+let s:clip = '/mnt/c/Windows/System32/clip.exe'  " change this path according to your mount point
+if executable(s:clip)
+    augroup WSLYank
+        autocmd!
+        autocmd TextYankPost * if v:event.operator ==# 'y' | call system(s:clip, @0) | endif
+    augroup END
+endif
